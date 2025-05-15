@@ -1971,18 +1971,17 @@ color: white;
 }
 
 .step {
-  width: 1px;
-  height: 1px;
-  border-radius: 50%;
+  width: 20%;
+  height: 60%;
+  border-radius: 10px;
   padding:20px;
   margin-right:20px;
   background-color: #fff;
   border: 3px solid #ddd;
   color: #4a154b;
-  display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: bold;
   transition: 0.4s ease;
 }
@@ -1993,6 +1992,11 @@ color: white;
   border: 3px solid #4a154b;
 }
 
+.step-icon {
+  font-size: 10px;
+  margin-bottom: 10px;
+  color: #4a154b;
+}
 .step-label {
   margin-top: 10px;
   font-size: 12px;
