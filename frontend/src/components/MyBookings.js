@@ -226,7 +226,7 @@ const MyBookings = () => {
             {isDropdownOpen && (
               <ul className="dropdown-menu">
                 <li ><a href= "/create-profile">Create Profile</a></li>
-                <li ><a href= "/mybook">Update Profile</a></li>
+                <li onClick={() => navigate("/profile")}>Update Profile</li>
               </ul>
             )}
           </li>
@@ -253,6 +253,8 @@ const MyBookings = () => {
         <button className="mybook-toggle-btn" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
           <FaBars />
         </button>
+        
+
         <div className="mybook-menu">
          
           <div className={`mybook-menu-item ${activeSection === "bookings" ? "active" : ""}`} onClick={() => setActiveSection("bookings")}>
@@ -282,11 +284,7 @@ const MyBookings = () => {
           </div>
         )}
 
-          <div className={`mybook-menu-item ${activeSection === "payments" ? "active" : ""}`} onClick={() => setActiveSection("payments")}>
-            <FaCreditCard className="mybook-icon" />
-            {isSidebarOpen && <span>Payments</span>}
-          </div>
-        
+          
           <div className={`mybook-menu-item ${activeSection === "support" ? "active" : ""}`} onClick={() => setActiveSection("support")}>
             <FaHeadset className="mybook-icon" />
             {isSidebarOpen && <span>Customer Care</span>}
@@ -465,23 +463,7 @@ const MyBookings = () => {
 
 
 
-        {/* Pending Payments Section */}
-        {activeSection === "payments" && (
-          <div className="mybook-payments">
-            <h2>Payments</h2>
-            {pendingPayments.length > 0 ? (
-              pendingPayments.map((payment) => (
-                <div key={payment.id} className="mybook-payment-card">
-                  <p><strong>Service:</strong> {payment.service}</p>
-                  <p><strong>Amount:</strong> {payment.amount}</p>
-                  <button>Pay Now</button>
-                </div>
-              ))
-            ) : (
-              <p>No pending payments.</p>
-            )}
-          </div>
-        )}
+
 
         {/* Customer Care Section */}
         {activeSection === "support" && (

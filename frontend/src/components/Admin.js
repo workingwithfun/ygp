@@ -44,7 +44,34 @@ const feedbackData = [
 const Admin= () => {
    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const [activeSection, setActiveSection] = useState('employees');
+const [reports, setReports] = useState(() => {
+  const stored = localStorage.getItem("uploadedReports");
+  return stored ? JSON.parse(stored) : [];
+});
+const handleReportUpload = (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
 
+  const reader = new FileReader();
+  reader.onload = () => {
+    const newReport = {
+      id: Date.now(),
+      name: file.name,
+      data: reader.result,
+      uploadedAt: new Date().toLocaleString(),
+    };
+
+    const updatedReports = [...reports, newReport];
+    setReports(updatedReports);
+    localStorage.setItem("uploadedReports", JSON.stringify(updatedReports));
+  };
+  reader.readAsDataURL(file);
+};
+const handleDeleteReport = (id) => {
+  const updatedReports = reports.filter(r => r.id !== id);
+  setReports(updatedReports);
+  localStorage.setItem("uploadedReports", JSON.stringify(updatedReports));
+};
     {/*Manage Employee*/}
     const [employees, setEmployees] = useState([]);
   const [filter, setFilter] = useState('');
@@ -178,7 +205,7 @@ return (
   <FaThumbsUp />
   {isSidebarOpen && <span>Manage Feedback</span>}
 </div>
- <div className={`smm-menu-item ${activeSection === "task" ? "active" : ""}`} onClick={() => setActiveSection("task")}>
+ <div className={`smm-menu-item ${activeSection === "reports" ? "active" : ""}`} onClick={() => setActiveSection("reports")}>
 
             <FaTasks />
             {isSidebarOpen && <span>Reports</span>}
@@ -356,6 +383,41 @@ return (
  
       
             </div>)}
+
+                    {activeSection === "reports" && (
+                         <div className="smm-main">
+                      <section>
+              <h2>Upload Reports</h2>
+              
+              {reports.length === 0 ? (
+                <p style={{ color: "#888", marginTop: "10px" }}>No reports uploaded yet.</p>
+              ) : (
+                <table className="report-table">
+                  <thead>
+                    <tr>
+                      <th>Report Name</th>
+                      <th>Uploaded At</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {reports.map((report) => (
+                      <tr key={report.id}>
+                        <td>{report.name}</td>
+                        <td>{report.uploadedAt}</td>
+                        <td>
+                          <a href={report.data} download={report.name} className="btn-download">Download</a>
+                          <button onClick={() => handleDeleteReport(report.id)} className="btn-delete">Delete</button>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </section>
+            
+                      </div>
+                    )}
             {activeSection === "feedback" && (
   <div className="smm-main">
 <div className="feedback-container">

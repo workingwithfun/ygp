@@ -1540,6 +1540,7 @@ margin-bottom: 19px;
   padding: 0 5px;
 }
 
+
 .mybook-button {
   width: 100%;
   padding: 10px;
@@ -1869,8 +1870,9 @@ margin-bottom: 19px;
 .mybook-popup-content {
   background: white;
   top:5%;
-  padding: 10px;
+  padding:10px;
   width: 600px;
+  height: 550px;
   border-radius: 10px;
   text-align: center;
   position: relative;
@@ -1887,7 +1889,7 @@ border-radius:5px;
   cursor: pointer;
 }
 .mybook-popup-content button:hover{
-  color:red;
+  color:rgb(247, 244, 244);
 }
 .mybook-popup-content p{
   font-size:14px;
@@ -1959,6 +1961,13 @@ button:disabled {
   position: relative;
   z-index: 1;
   text-align: center;
+}
+.step-content button{
+  background:rgb(76, 156, 76);
+font-size: 16px;
+margin-top: 20px;
+margin-right: 70px;
+color: white;
 }
 
 .step {
