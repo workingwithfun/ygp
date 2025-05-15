@@ -143,7 +143,7 @@ const handleChange = (e) => {
   setFormData({ ...formData, [name]: value });
 };
 
-const handleSubmit = async (e) => {
+/*const handleSubmit = async (e) => {
   e.preventDefault();
   const response = await registerUser(formData);
   console.log("Response:", response);
@@ -152,7 +152,7 @@ const handleSubmit = async (e) => {
   } else {
     alert("User registered successfully!");
   }
-};
+};*/
 
 const nameInputRef = useRef(null); // Reference for the name input field
 const handleVerifyOtp = async () => {

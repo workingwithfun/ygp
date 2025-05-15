@@ -7,7 +7,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaYoutube } from "react-icons/fa";
 import { ToastContainer } from "react-toastify";
-import { registerUser } from "../api/authApi";
 import "react-phone-input-2/lib/style.css"; 
 import "react-toastify/dist/ReactToastify.css";
 import { NavLink } from "react-router-dom";
